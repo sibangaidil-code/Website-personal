@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Login Sederhana</title>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            width: 350px;
+            transition: all 0.5s ease;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #343a40;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box; /* Penting agar padding tidak melebarkan input */
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            color: #dc3545;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* Konten Setelah Login */
+        #success-content {
+            display: none; /* Awalnya disembunyikan */
+            text-align: center;
+        }
+        
+        #success-content h3 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        #success-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-form-container" class="container">
+        <h2>MASUK SISTEM</h2>
+        <input type="text" id="username" placeholder="Username (cekbi)">
+        <input type="password" id="password" placeholder="Password (kaksah)">
+        <button onclick="login()">Login</button>
+        <p id="message"></p>
+    </div>
+
+    <div id="success-content" class="container">
+        <h3>Halo, cekbi! Login Anda Berhasil.</h3>
+        <img src="adi.jpg">
+    </div>
+
+    <script>
+        function login() {
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+            const loginContainer = document.getElementById('login-form-container');
+            const successContent = document.getElementById('success-content');
+
+            // Kredensial yang Benar
+            const correctUsername = "cekbi";
+            const correctPassword = "kaksah";
+
+            if (usernameInput === correctUsername && passwordInput === correctPassword) {
+                // Login Berhasil
+                loginContainer.style.display = 'none'; // Sembunyikan form
+                successContent.style.display = 'block'; // Tampilkan konten sukses
+                // Mengosongkan pesan error
+                messageElement.textContent = ""; 
+            } else {
+                // Login Gagal
+                messageElement.textContent = "Username atau Password salah! Coba lagi.";
+            }
+        }
+    </script>
+
+</body>
+</html>
